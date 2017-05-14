@@ -8,17 +8,13 @@ module.exports = function(app)
     if(process.env.MLAB_WEBDEV_NEU_UNAME) { // check if running remotely
         var username = process.env.MLAB_WEBDEV_NEU_UNAME; // get from environment
         var password = process.env.MLAB_WEBDEV_NEU_PASS;
-        connectionString = 'mongodb://' + admin + ':' + admin;
+        connectionString = 'mongodb://' + username + ':' + password;
         connectionString += '@ds143081.mlab.com:43081/heroku_zf3vd5p3'; // user yours
     }
 
     var mongoose = require("mongoose");
-    try{    
-        mongoose.connect(connectionString);
-    }
-    catch{ 
-	console.log(connectionString)
-	} 
+    mongoose.connect(connectionString);
+    console.log(connectionString)
 
     var TestSchema = mongoose.Schema({
         message: String
