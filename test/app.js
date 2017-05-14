@@ -13,7 +13,12 @@ module.exports = function(app)
     }
 
     var mongoose = require("mongoose");
-    mongoose.connect(connectionString);
+    try{    
+        mongoose.connect(connectionString);
+    }
+    catch{ 
+	console.log(connectionString)
+	} 
 
     var TestSchema = mongoose.Schema({
         message: String
