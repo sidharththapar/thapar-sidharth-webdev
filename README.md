@@ -1,8 +1,13 @@
-Create a README.md file at the root of your github repository with the following information
-Say something about yourself, .e.g., you're a graduate student at Northeastern, past experience, if you are working, projects you've worked on, etc.
-Describe the purpose of repository, e.g., for webdev
-Create links to the following
-Root to the hosted environment on Heroku (or AWS, or OpenShift)
-Link to your project (you might need to come back to this)
-Link to your assignment (you might need to come back to this)
-Feel free to add more content
+Hi I am a graduate student in Computer Science at CCIS, Northeastern University
+My Projects: 
+1. Developer interpretter for my own programming language PS11 in PDP course.
+2. Also developed an interpretter for the same.
+3. Text Segmentation using Viterbi Algorithm on a unigram model.
+4. Currently working on a web development project. 
+
+
+This repository is for web development course.
+
+URL for app hosted on Heroku: https://thapar-sidharth-assignment1.herokuapp.com/
+Link to my project: Coming soon
+Link to my assignment: https://github.com/sidharththapar/thapar-sidharth-webdev
