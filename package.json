@@ -15,4 +15,5 @@
   },
   "author": "Jose G. Annunziato",
   "license": "ISC"
+  "passport-github": "alexgorbatchev/passport- github#9fef321dc7237c977b81fbf4a4f9589fc8ae9aaf"
 }
