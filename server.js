@@ -20,7 +20,7 @@ app.get('/env', function(req, res) {
   res.json({connectionString: connectionString});
 });
 
-//require ("./test/app.js")(app);
+require ("./test/app.js")(app);
 
 var port = process.env.PORT || 3000;
 
