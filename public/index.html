@@ -1,30 +1,65 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="WAM">
 <head>
-    <meta charset="UTF-8">
-    <title>Web Dev Course Home Page</title>
+    <script src="assignment/vendor/angular/angular.min.js"></script>
+    <script src="assignment/vendor/angular/angular-route.min.js"></script>
+    <script src="assignment/app.js"></script>
+    <script src="assignment/config.js"></script>
+
+    <!-- user -->
+    <script src="assignment/views/user/controller/login.controller.client.js"></script>
+    <script src="assignment/views/user/controller/profile.controller.client.js"></script>
+    <script src="assignment/views/user/controller/register.controller.client.js"></script>
+    <script src="assignment/services/user.service.client.js"></script>
+
+    <!-- website -->
+    <script src="assignment/views/website/controller/website-list.controller.client.js"></script>
+    <script src="assignment/views/website/controller/website-edit.controller.client.js"></script>
+    <script src="assignment/views/website/controller/website-new.controller.client.js"></script>
+    <script src="assignment/services/website.service.client.js"></script>
+
+
+    <!-- page -->
+    <script src="assignment/views/page/controller/page-list.controller.client.js"></script>
+    <script src="assignment/views/page/controller/page-edit.controller.client.js"></script>
+    <script src="assignment/views/page/controller/page-new.controller.client.js"></script>
+    <script src="assignment/services/page.service.client.js"></script>
+    <!-- TBD -->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="Sidharth Thapar">
+    <link rel="icon" href="../favicon.ico">
+
+    <title>Theme Template for Bootstrap</title>
+
+    <link href="assignment/css/style.css" rel="stylesheet" />
+    <!-- Bootstrap core CSS -->
+    <link href="assignment/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="assignment/vendor/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="assignment/vendor/bootstrap/theme.css" rel="stylesheet">
 </head>
+
 <body>
-    <h1>Web Dev Course Home Page</h1>
 
-    <p>
-        Customize this home page to your linking.
-    </p>
+<div ng-view>
 
-    <h2>Required links</h2>
-    <ul>
-        <li>
-            <a href="project/index.html">Project</a>
-        </li>
-        <li>
-            <a href="assignment/views/user/templates/login.view.client.html">Assignment</a>
-        </li>
-        <li>
-            <a href="test/index.html">Test MongoDB</a>
-        </li>
-        <li>
-            <a href ="https://github.com/sidharththapar/thapar-sidharth-webdev">Your public repository at GitHub.com</a>
-        </li>
-    </ul>
+</div>
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="assignment/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--<script src="../../assets/js/docs.min.js"></script>-->
 </body>
 </html>
