@@ -8,6 +8,7 @@
         this.findWebsiteById = findWebsiteById;
         this.deleteWebsite = deleteWebsite;
         this.createWebsite = createWebsite;
+        this.updateWebsite = updateWebsite;
 
         var websites = [
             { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Facebook D" },
@@ -18,6 +19,13 @@
             { "_id": "678", "name": "Checkers",    "developerId": "123", "description": "Checkers D" },
             { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Chess Desc" }
         ];
+
+        function updateWebsite(website, websiteId) {
+            deleteWebsite(websiteId);
+            website._id = websiteId;
+            website.developerId = model.userId;
+            websites.push(website);
+        }
 
         function createWebsite(website) {
             website._id = (new Date()).getTime() + "";

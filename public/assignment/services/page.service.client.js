@@ -21,7 +21,7 @@
         }
 
         function deletePage(pageId) {
-            var page = findPageById(PageId);
+            var page = findPageById(pageId);
             var index = pages.indexOf(page);
             pages.splice(index, 1);
         }
@@ -32,17 +32,16 @@
             });
         }
 
-        function findAllPagesForWebsite(webId) {
+        function findAllPagesForWebsite(websiteId) {
             var results = [];
 
             for(var v in pages) {
-                if(pages[v].websiteId === webId) {
+                if(pages[v].websiteId === websiteId) {
                     pages[v].created = new Date();
                     pages[v].accessed = new Date();
                     results.push(pages[v]);
                 }
             }
-
             return results;
         }
     }

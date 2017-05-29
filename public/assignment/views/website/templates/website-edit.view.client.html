@@ -1,11 +1,15 @@
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-header hidden-sm hidden-xs col-md-4">
-        <a class="navbar-brand pull-left" href="website-list.view.client.html"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="navbar-brand pull-left" href="website-list.view.client.html">
+            <span class="glyphicon glyphicon-chevron-left"></span></a>
         <a class="navbar-brand pull-left">Websites</a>
     </div>
     <div class="navbar-header col-xs-9 hidden-md hidden-lg">
-        <a class="navbar-brand pull-left" href="website-list.view.client.html"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="navbar-brand pull-left"
+           href="#!/user/{{model.userId}}/website">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
         <a class="navbar-brand pull-left">Edit Website</a>
     </div>
     <div class="navbar-header hidden-sm hidden-xs col-md-1">
@@ -18,7 +22,10 @@
         <a class="navbar-brand pull-left">Edit Website</a>
     </div>
     <div class="navbar-header col-xs-3">
-        <a class="navbar-brand pull-right" href="website-list.view.client.html"><span class="glyphicon glyphicon-ok"></span></a>
+        <a class="navbar-brand pull-right"
+           ng-click="model.updateWebsite(website, model.websiteId)">
+            <span class="glyphicon glyphicon-ok"></span>
+        </a>
     </div>
 </nav>
 
@@ -72,14 +79,14 @@
     <div class="container-fluid">
         <label for="name">Name</label>
         <input class="form-control"
-               ng-model="model.website.name"
+               ng-model="website.name"
                placeholder="facebook"
                value="Blogger"
                id="name"/>
 
       <label for="description">Description</label>
         <textarea id="description"
-                  ng-model="model.website.description"
+                  ng-model="website.description"
                   rows="5"
                   placeholder="So big it is its own country"
                   class="form-control">
@@ -89,6 +96,13 @@
            class="btn btn-block btn-danger">
             Delete
         </a>
+
+        <a ng-click="model.updateWebsite(website, model.websiteId)"
+           class="btn btn-block btn-success">
+            Update
+        </a>
+
+
     </div>
 </div>
 
