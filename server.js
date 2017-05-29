@@ -16,12 +16,12 @@ app.get('/env', function(req, res) {
     connectionString = 'mongodb://' + username + ':' + password;
     connectionString += '@ds139761.mlab.com:39761/heroku_v7g71n9h'; // user yours
   }
-  
+
   res.json({connectionString: connectionString});
 });
 
 require ("./test/app.js")(app);
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 4000;
 
 app.listen(port);

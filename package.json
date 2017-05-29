@@ -5,7 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.15.1",
-    "express": "^4.13.4",
+    "express": "^4.15.3",
     "mongoose": "^4.4.15"
   },
   "devDependencies": {},
@@ -14,5 +14,16 @@
     "start": "node server.js"
   },
   "author": "Jose G. Annunziato",
-  "license": "ISC"
+  "license": "ISC",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sidharththapar/thapar-sidharth-webdev.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sidharththapar/thapar-sidharth-webdev/issues"
+  },
+  "homepage": "https://github.com/sidharththapar/thapar-sidharth-webdev#readme"
 }

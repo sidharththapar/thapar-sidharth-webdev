@@ -1,0 +1,67 @@
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header col-xs-11">
+        <a class="navbar-brand pull-left" href="../../user/templates/profile.view.client.html"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="navbar-brand pull-left" href="#">Pages</a>
+    </div>
+    <div class="navbar-header col-xs-1">
+        <a class="navbar-brand pull-right"
+           href="#!/user/{{model.userId}}/website/{{model.webId}}/page/new">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+    </div>
+</nav>
+
+
+<div class="container-fluid col-xs-12">
+    <div class="container-fluid col-xs-12">
+        <ul class="list-group con">
+
+            <li class="list-group-item active">
+                <div class="row">
+                    <div class="col-lg-5 col-md-8 col-xs-11 ">
+                        Name
+                    </div>
+                    <div class="col-lg-3 visible-lg">
+                        Created
+                    </div>
+                    <div class="col-md-3 hidden-sm hidden-xs">
+                        Accessed
+                    </div>
+                    <div class="col-xs-1">
+                    </div>
+                </div>
+            </li>
+
+
+            <li ng-repeat="website in model.websites"
+                class="list-group-item">
+                <div class="row">
+                    <div class="col-lg-5 col-md-8 col-xs-11">
+                        <a href="#!/user/{{model.userId}}/website/{{model.webId}}/page/{{model.pageId}}/widget">
+                            {{page.name}}
+                        </a>
+                    </div>
+                    <div class="col-lg-3 visible-lg">
+                        {{page.created | date}}
+                    </div>
+                    <div class="col-md-3 hidden-sm hidden-xs">
+                        {{page.accessed | date}}
+                    </div>
+                    <div class="col-xs-1">
+                        <a href="#!/user/{{model.userId}}/website/{{website._id}}/page/{{page._id}}">
+                            <span class="glyphicon glyphicon-cog pull-right"></span>
+                        </a>
+
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="navbar-header col-xs-12">
+        <a class="navbar-brand pull-right" href="../../user/templates/profile.view.client.html"><span class="glyphicon glyphicon-user"></span></a>
+    </div>
+</nav>
