@@ -14,19 +14,41 @@
         model.updateWebsite = updateWebsite;
 
         function init() {
-            model.websites = websiteService.findAllWebsitesForUser(model.userId);
-            model.website = websiteService.findWebsiteById(model.websiteId);
+            websiteService
+                .findAllWebsitesForUser(model.userId)
+                .then(renderWebsites);
+
+            websiteService
+                .findWebsiteById(model.websiteId)
+                .then(renderWebsite);
         }
         init();
 
+        function renderWebsite(website) {
+            model.website = website;
+        }
+
+        function renderWebsites(websites) {
+            model.websites = websites;
+        }
+
         function deleteWebsite(websiteId) {
-            websiteService.deleteWebsite(websiteId);
-            $location.url('/user/'+model.userId+'/website');
+            websiteService
+                .deleteWebsite(websiteId)
+                .then(function () {
+                    $location.url('/user/'+model.userId+'/website');
+                });
         }
 
         function updateWebsite(website, websiteId) {
-            websiteService.updateWebsite(website, websiteId);
-            $location.url('/user/'+ model.userId +'/website');
+            website.developerId = model.userId;
+            website._id = websiteId;
+            websiteService
+                .updateWebsite(website)
+                .then(function (website) {
+                    $location.url('/user/'+ model.userId +'/website');
+                });
+
         }
     }
 })();

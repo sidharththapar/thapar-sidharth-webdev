@@ -14,8 +14,7 @@
         <a class="navbar-brand pull-left">New Page</a>
     </div>
     <div class="navbar-header hidden-sm hidden-xs col-md-1">
-        <a class="navbar-brand pull-right"
-           href="#!/user/{{model.userId}}/website/new">
+        <a class="navbar-brand pull-right">
             <span class="glyphicon glyphicon-plus"></span>
         </a>
     </div>
@@ -55,18 +54,18 @@
                 class="list-group-item">
                 <div class="row">
                     <div class="col-md-10 col-lg-5">
-                        <a href="#!/user/{{model.userId}}/website/{{website._id}}/page/{{page._id}}/widget">
+                        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
                             {{page.name}}
                         </a>
                     </div>
                     <div class="col-lg-3 hidden-md">
-                        {{website.created | date}}
+                        {{page.created | date}}
                     </div>
                     <div class="col-md-3 hidden-md">
-                        {{website.accessed | date}}
+                        {{page.accessed | date}}
                     </div>
                     <div class="col-md-2 col-lg-1">
-                        <a href="#!/user/{{model.userId}}/website/{{website._id}}">
+                        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
                             <span class="glyphicon glyphicon-cog pull-right"></span>
                         </a>
                     </div>
@@ -101,9 +100,4 @@
     </div>
 </div>
 
-
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
-    <div class="navbar-header col-xs-12">
-        <a class="navbar-brand pull-right" href="../../user/templates/profile.view.client.html"><span class="glyphicon glyphicon-user"></span></a>
-    </div>
-</nav>
+<div ng-include="'views/common/footer.view.client.html'"></div>

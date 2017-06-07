@@ -3,7 +3,8 @@
     <div class="navbar-header col-xs-11">
         <a class="navbar-brand pull-left"
            href="#!/user/{{model.userId}}">
-            <span class="glyphicon glyphicon-chevron-left"></span></a>
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
         <a class="navbar-brand pull-left" href="#">Websites</a>
     </div>
     <div class="navbar-header col-xs-1">
@@ -60,11 +61,4 @@
     </div>
 </div>
 
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
-    <div class="navbar-header col-xs-12">
-        <a class="navbar-brand pull-right"
-           href="#!/user/{{model.userId}}">
-            <span class="glyphicon glyphicon-user"></span>
-        </a>
-    </div>
-</nav>
+<div ng-include="'views/common/footer.view.client.html'"></div>

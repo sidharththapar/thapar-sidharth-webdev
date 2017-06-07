@@ -1,0 +1,20 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header col-xs-11">
+        <a class="navbar-brand pull-left"
+           href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="navbar-brand pull-left"
+           href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
+            Choose Widget
+        </a>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div ng-include="model.widgetEditUrl(model.widgetId)"></div>
+</div>
+
+<div ng-include="'views/common/footer.view.client.html'"></div>
+
+

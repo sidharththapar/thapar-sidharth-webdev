@@ -10,7 +10,18 @@
     </div>
 </nav>
 
+
+
+
 <div class="container-fluid">
+    <div class="container-fluid">
+        <div ng-show="model.error" class="container-fluid alert alert-danger">
+        {{model.error}}
+        </div>
+        <div ng-show="model.message" class="container-fluid alert alert-success">
+            {{model.message}}
+        </div>
+    </div>
     <form>
         <div class="form-group col-md-12">
             <label for="username">
@@ -27,7 +38,8 @@
             <label for="email">
                 Email address
             </label>
-            <input type="email"
+            <input ng-model="model.user.email"
+                   type="email"
                    class="form-control"
                    id="email"
                    placeholder="alice@wonderland.com">
@@ -65,14 +77,15 @@
            href="#!/login">
             Logout
         </a>
+        <a class="btn btn-success btn-block"
+           ng-click="model.updateUser(model.user)">
+            Update
+        </a>
+        <a class="btn btn-danger btn-block"
+           ng-click="model.deleteUser()">
+            Unregister
+        </a>
     </div>
 </div>
 
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
-    <div class="navbar-header col-xs-12">
-        <a class="navbar-brand pull-right"
-           href="#!/user/{{model.userId}}">
-            <span class="glyphicon glyphicon-user"></span>
-        </a>
-    </div>
-</nav>
+<div ng-include="'views/common/footer.view.client.html'"></div>

@@ -11,22 +11,21 @@
     </div>
     <div class="navbar-header col-xs-1">
         <a class="navbar-brand pull-right"
-           href="widget-choose.view.client.html">
-            <span class="glyphicon glyphicon-plus"></span>
-        </a>
+           href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
+        <span class="glyphicon glyphicon-plus"></span></a>
     </div>
 </nav>
 
 <div class="container-fluid">
     <div class="container-fluid">
         <div ng-repeat="widget in model.widgets" class="wd-widget">
-            <div class="wd-widget-toolbar" style="z-index: 2" >
-                <a href="widget-heading-edit.html">
+            <div class="wd-widget-toolbar">
+                <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
                     <span class="glyphicon glyphicon-cog"></span>
                 </a>
                 <span class="glyphicon glyphicon-align-justify"></span>
             </div>
-            <div ng-include="model.widgetUrl(widget)"></div>
+            <div class="wd-widget-member" ng-include="model.widgetUrl(widget)"></div>
         </div>
     </div>
 </div>

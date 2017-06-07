@@ -1,24 +1,20 @@
 (function () {
     angular
         .module('WAM')
-        .controller('widgetListController', widgetListController);
+        .controller('widgetNewController', widgetNewController);
 
-        function init() {
-            pageService
-                .findAllPagesForWebsite(model.websiteId)
-
-    }
-    function widgetListController($sce, widgetService, $routeParams, $location) {
+    function widgetNewController($sce, widgetService, $routeParams, $location) {
         var model = this;
 
         model.trust = trust;
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
-        model.widgetUrl = widgetUrl;
-        //model.widgetEditUrl = widgetEditUrl;
+        model.createWidget = createWidget;
 
         model.websiteId = $routeParams['websiteId'];
         model.userId = $routeParams['userId'];
         model.pageId = $routeParams['pageId'];
+
+
 
         function init() {
             widgetService
@@ -31,17 +27,14 @@
             model.widgets = widgets;
         }
 
-        function widgetUrl(widget) {
-            var url = 'views/widget/templates/widget-'+
-                widget.widgetType.toLowerCase()+'.view.client.html';
-            return url;
+        function createWidget(newWidget) {
+            newWidget.pageId = model.pageId;
+            widgetService
+                .createWidget(newWidget)
+                .then(function (widget) {
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page'+ model.pageId+'widget');
+                });
         }
-
-        // function widgetEditUrl(widget) {
-        //     var url = "/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget/"+model.websiteId+widget.widgetType;
-        //     $location.path(url);
-        // }
-
 
         function getYouTubeEmbedUrl(linkUrl) {
             var embedUrl = "https://www.youtube.com/embed/";
@@ -49,7 +42,7 @@
             embedUrl += linkUrlParts[linkUrlParts.length - 1];
             return $sce.trustAsResourceUrl(embedUrl);
         }
-        
+
         function trust(html) {
             // scrubbing the html
             return $sce.trustAsHtml(html);

@@ -1,14 +1,14 @@
 input.form-control,
 textarea.form-control,
 select.form-control {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 
 
 body {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 60px; !important;
+    padding-bottom: 60px !important;
 }
 
 .wd-widget {
@@ -17,6 +17,14 @@ body {
 
 .wd-widget > img {
     width: 100%;
+}
+
+.wd-widget .wd-widget-member{
+    margin-bottom: 10px;
+}
+
+.wd-widget .wd-widget-toolbar{
+    z-index: 2;
 }
 
 .wd-widget > .wd-widget-toolbar {
