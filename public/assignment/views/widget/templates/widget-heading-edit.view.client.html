@@ -10,7 +10,7 @@
     </div>
     <div class="navbar-header col-xs-1">
         <a class="navbar-brand pull-right"
-           href="templates/widget-list.view.client.html">
+           ng-click="model.updateWidget(model.widget, model.widgetId)">
             <span class="glyphicon glyphicon-ok"></span>
         </a>
     </div>
@@ -26,7 +26,7 @@
            id="name"/>
 
     <label for="text">Text</label>
-    <input ng-model="modle.widget.text"
+    <input ng-model="model.widget.text"
            class="form-control"
            placeholder="facebook"
            value="US Senate Reaches Compromise"
@@ -44,7 +44,20 @@
         <option>6 (Smallest)</option>
     </select>
 
-    <a href="widget-list.view.client.html" class="btn btn-block btn-danger">Delete</a>
+    <a ng-click="model.deleteWidget()"
+       class="btn btn-block btn-danger">
+        Delete
+    </a>
+    <a ng-click="model.updateWidget(model.widget, model.widgetId)"
+       ng-show="{{model.widgetId}}"
+       class="btn btn-block btn-success">
+        Update
+    </a>
+    <a ng-click="model.createWidget(model.widget)"
+       ng-hide="{{model.widgetId}}"
+       class="btn btn-block btn-success">
+        Create
+    </a>
 
 </div>
 

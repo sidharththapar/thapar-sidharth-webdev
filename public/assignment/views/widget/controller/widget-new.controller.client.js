@@ -32,9 +32,11 @@
             widgetService
                 .createWidget(newWidget)
                 .then(function (widget) {
-                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page'+ model.pageId+'widget');
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+ model.pageId+'/widget');
                 });
         }
+
+
 
         function getYouTubeEmbedUrl(linkUrl) {
             var embedUrl = "https://www.youtube.com/embed/";

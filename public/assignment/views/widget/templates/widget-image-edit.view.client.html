@@ -9,7 +9,7 @@
     </div>
     <div class="navbar-header col-xs-1">
         <a class="navbar-brand pull-right"
-           href="templates/widget-list.view.client.html">
+           ng-click="model.updateWidget(model.widget, model.widgetId)"
             <span class="glyphicon glyphicon-ok"></span>
         </a>
     </div>
@@ -17,42 +17,56 @@
 
 <div class="container-fluid">
 
-    <label for="name">Name</label>
-    <input ng-model="model.widget.name"
-           class="form-control"
-           placeholder="facebook"
-           value="top heading"
-           id="name"/>
 
-    <label for="text">Text</label>
-    <input ng-model="model.widget.text"
-           class="form-control"
-           placeholder="facebook"
-           value="US Senate Reaches Compromise"
-           id="text"/>
 
     <form action="/api/upload"   method="post" enctype="multipart/form-data">
+        <label for="name">Name</label>
+        <input ng-model="model.widget.name"
+               class="form-control"
+               placeholder="facebook"
+               value="top heading"
+               id="name"/>
+
+        <label for="text">Text</label>
+        <input ng-model="model.widget.text"
+               class="form-control"
+               placeholder="facebook"
+               value="US Senate Reaches Compromise"
+               id="text"/>
+
+        <label for="file">File Link</label>
         <input  ng-model="model.widget.file"
                 name="myFile"
                 type="file"
-                class="form-control"/>
+                class="form-control"
+                id="file"/>
+
         <input  name="width"     value="{{model.widget.width}}" style="display: none"/>
-        <!--<input  name="userId"    value="{{model.userId}}"   style="display: none"/>
+        <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
         <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
-        <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/--->
+        <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
         <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
         <button type="submit"    class="btn btn-block btn-primary">Upload Image</button>
+
+
+        <a ng-click="model.deleteWidget()"
+           class="btn btn-block btn-danger">
+            Delete
+        </a>
+        <a ng-click="model.updateWidget(model.widget, model.widgetId)"
+           ng-show="{{model.widgetId}}"
+           class="btn btn-block btn-success">
+            Update
+        </a>
+        <a ng-click="model.createWidget(model.widget)"
+           ng-hide="{{model.widgetId}}"
+           class="btn btn-block btn-success">
+            Create
+        </a>
     </form>
 
 
-    <label for="file">Upload</label>
-    <input id="file" multiple type="file" class="form-control"/>
 
-    <a href=""
-       class="btn btn-block btn-success">Upload</a>
-
-    <a href="widget-list.view.client.html"
-       class="btn btn-block btn-danger">Delete</a>
 
 </div>
 

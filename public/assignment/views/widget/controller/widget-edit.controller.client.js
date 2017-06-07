@@ -3,7 +3,7 @@
         .module('WAM')
         .controller('widgetEditController', widgetEditController);
 
-    function widgetEditController($sce, widgetService, $routeParams) {
+    function widgetEditController($sce, widgetService, $routeParams, $location) {
         var model = this;
 
         model.trust = trust;
@@ -29,9 +29,9 @@
         }
         init();
 
-        function deleteWidget(widgetId) {
+        function deleteWidget() {
             widgetService
-                .deleteWidget(widgetId)
+                .deleteWidget(model.widgetId)
                 .then(function () {
                     $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
                 });
@@ -43,7 +43,7 @@
             widgetService
                 .updateWidget(widget)
                 .then(function (page) {
-                    $location.url('/user/'+ model.userId +'/website/'+model.websiteId+'/page'+model.pageId+'/widget');
+                    $location.url('/user/'+ model.userId +'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
                 });
         }
 

@@ -25,10 +25,8 @@
                 .then(function (response) {
                     return response.data;
                 });
-            //     });
-            // widget._id = (new Date()).getTime() + "";
-            // widgets.push(widget);
         }
+
 
         function deleteWidget(widgetId) {
             var url = "/api/assignment/widget/"+widgetId;

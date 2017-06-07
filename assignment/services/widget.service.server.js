@@ -3,7 +3,7 @@ const app = require('../../express');
 var multer = require('multer');
 var upload = multer({ dest: __dirname+'/../../public/assignment/uploads' });
 
-app.post ("/api/upload", upload.single('myFile'), uploadImage);
+app.post   ("/api/upload", upload.single('myFile'), uploadImage);
 app.get    ('/api/assignment/page/:pageId/widget', findAllWidgetsForPage);
 app.get    ("/api/assignment/widget/:widgetId", findWidgetById);
 app.post   ('/api/assignment/page/:pageId/widget', createWidget);
@@ -77,6 +77,10 @@ function deleteWidget(req, res) {
 
 function uploadImage(req, res) {
 
+    var websiteId = req.body.websiteId;
+    var pageId = req.body.pageId;
+    var userId = req.body.userId;
+
     var widgetId      = req.body.widgetId;
     var width         = req.body.width;
     var myFile        = req.file;
@@ -96,7 +100,6 @@ function uploadImage(req, res) {
     //widget = getWidgetById(widgetId);
     widget.url = '/assignment/uploads/'+filename;
 
-    //var callbackUrl   = "/assignment/#/user/"+userId+"/website/"+websiteId+...;
-    var callbackUrl   = "/assignment/index.html#!/widget/345";
+    var callbackUrl   = "/assignment/index.html#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
     res.redirect(callbackUrl);
 }
