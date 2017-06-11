@@ -8,11 +8,11 @@
 
         model.trust = trust;
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
-        model.createWidget = createWidget;
 
         model.websiteId = $routeParams['websiteId'];
         model.userId = $routeParams['userId'];
         model.pageId = $routeParams['pageId'];
+        model.widgetType = $routeParams['widgetType'];
 
 
 
@@ -27,14 +27,7 @@
             model.widgets = widgets;
         }
 
-        function createWidget(newWidget) {
-            newWidget.pageId = model.pageId;
-            widgetService
-                .createWidget(newWidget)
-                .then(function (widget) {
-                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+ model.pageId+'/widget');
-                });
-        }
+
 
 
 

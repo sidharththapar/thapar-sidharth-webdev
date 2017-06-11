@@ -37,11 +37,6 @@
             return url;
         }
 
-        // function widgetEditUrl(widget) {
-        //     var url = "/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget/"+model.websiteId+widget.widgetType;
-        //     $location.path(url);
-        // }
-
 
         function getYouTubeEmbedUrl(linkUrl) {
             var embedUrl = "https://www.youtube.com/embed/";

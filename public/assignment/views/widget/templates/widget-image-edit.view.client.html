@@ -17,8 +17,6 @@
 
 <div class="container-fluid">
 
-
-
     <form action="/api/upload"   method="post" enctype="multipart/form-data">
         <label for="name">Name</label>
         <input ng-model="model.widget.name"
@@ -34,8 +32,26 @@
                value="US Senate Reaches Compromise"
                id="text"/>
 
-        <label for="file">File Link</label>
+        <label for="url">URL</label>
+        <input ng-model="model.widget.url"
+               class="form-control"
+               placeholder="facebook"
+               value="xyz.com"
+               id="url"/>
+
+        <label for="width">Width</label>
+        <select ng-model="model.widget.width"
+                id="width"
+                class="form-control">
+            <option>50%</option>
+            <option>75%</option>
+            <option>100%</option>
+        </select>
+
+        <label ng-hide="{{model.widgetId}}"
+               for="file">Upload</label>
         <input  ng-model="model.widget.file"
+                ng-hide="{{model.widgetId}}"
                 name="myFile"
                 type="file"
                 class="form-control"
@@ -46,10 +62,13 @@
         <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
         <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
         <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
-        <button type="submit"    class="btn btn-block btn-primary">Upload Image</button>
+        <button type="submit"
+                ng-hide="{{model.widgetId}}"
+                class="btn btn-block btn-primary">Upload Image</button>
 
 
         <a ng-click="model.deleteWidget()"
+           ng-show="{{model.widgetId}}"
            class="btn btn-block btn-danger">
             Delete
         </a>
@@ -58,14 +77,18 @@
            class="btn btn-block btn-success">
             Update
         </a>
-        <a ng-click="model.createWidget(model.widget)"
+        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/search"
            ng-hide="{{model.widgetId}}"
            class="btn btn-block btn-success">
             Create
         </a>
+
+        <a ng-hide="{{model.widgetId}}"
+           class="btn btn-block btn-info"
+           ng-click="model.openFlickrSearch();">
+            Search Flickr
+        </a>
     </form>
-
-
 
 
 </div>

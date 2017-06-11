@@ -13,21 +13,31 @@
         model.websiteId = $routeParams['websiteId'];
         model.userId = $routeParams['userId'];
         model.pageId = $routeParams['pageId'];
+
         model.widgetId = $routeParams['widgetId'];
+        model.widgetType = $routeParams['widgetType'];
+
+        model.createWidget = createWidget;
         model.deleteWidget = deleteWidget;
         model.updateWidget = updateWidget;
-
+        model.openFlickrSearch = openFlickrSearch;
 
         function init() {
             widgetService
                 .findAllWidgetsForPage(model.pageId)
                 .then(renderWidgets);
 
-            widgetService
-                .findWidgetById(model.widgetId)
-                .then(renderWidget)
+            if(model.widgetId !== undefined){
+                widgetService
+                    .findWidgetById(model.widgetId)
+                    .then(renderWidget)
+            }
         }
         init();
+
+        function openFlickrSearch() {
+            $location.path("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget/search");
+        }
 
         function deleteWidget() {
             widgetService
@@ -47,6 +57,16 @@
                 });
         }
 
+        function createWidget(newWidget) {
+            newWidget.pageId = model.pageId;
+            newWidget.widgetType = model.widgetType;
+            widgetService
+                .createWidget(newWidget)
+                .then(function (widget) {
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+ model.pageId+'/widget');
+                });
+        }
+
         function renderWidget(widget) {
             model.widget = widget;
         }
@@ -56,8 +76,14 @@
         }
 
         function widgetEditUrl(widgetId) {
-            var url = 'views/widget/templates/widget-'+
+            if ($routeParams['widgetId'] === undefined){
+                var url = 'views/widget/templates/widget-'+
+                    model.widgetType+'-edit.view.client.html';
+            }
+            if($routeParams['widgetType'] === undefined){
+                var url = 'views/widget/templates/widget-'+
                     model.widget.widgetType.toLowerCase()+'-edit.view.client.html';
+            }
             return url;
         }
 

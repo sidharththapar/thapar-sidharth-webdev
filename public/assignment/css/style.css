@@ -4,11 +4,18 @@ select.form-control {
     margin-bottom: 10px;
 }
 
-
+#sortList{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+.container-fluid{
+    padding-bottom: 60px; !important;
+}
 
 body {
     padding-top: 60px; !important;
-    padding-bottom: 60px !important;
+    padding-bottom: 60px;
 }
 
 .wd-widget {

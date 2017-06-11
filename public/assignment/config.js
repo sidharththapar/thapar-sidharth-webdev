@@ -53,6 +53,11 @@
                 controller: 'pageEditController',
                 controllerAs: 'model'
             })
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/search", {
+                templateUrl: 'views/widget/templates/widget-flickr-search.view.client.html',
+                controller: 'FlickrImageSearchController',
+                controllerAs: 'model'
+            })
             .when('/user/:userId/website/:websiteId/page/:pageId/widget', {
                 templateUrl: 'views/widget/templates/widget-list.view.client.html',
                 controller: 'widgetListController',
@@ -63,51 +68,53 @@
                 controller: 'widgetNewController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/new/header', {
-                templateUrl: 'views/widget/templates/widget-heading-edit.view.client.html',
-                controller: 'widgetNewController',
-                controllerAs: 'model'
-            })
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/new/image', {
-            templateUrl: 'views/widget/templates/widget-image-edit.view.client.html',
-            controller: 'widgetNewController',
-            controllerAs: 'model'
-            })
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/new/youtube', {
-                templateUrl: 'views/widget/templates/widget-youtube-edit.view.client.html',
-                controller: 'widgetNewController',
-                controllerAs: 'model'
-            })
             .when('/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId', {
                 templateUrl: 'views/widget/templates/widget-edit.view.client.html',
                 controller: 'widgetEditController',
                 controllerAs: 'model'
             })
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/YOUTUBE', {
-                templateUrl: 'views/widget/templates/widget-youtube-edit.view.client.html',
-                controller: 'widgetEditController',
-                controllerAs: 'model'
-            })
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/IMAGE', {
-                templateUrl: 'views/widget/templates/widget-image-edit.view.client.html',
-                controller: 'widgetEditController',
-                controllerAs: 'model'
-            })
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/HEADING', {
-                templateUrl: 'views/widget/templates/widget-heading-edit.view.client.html',
-                controller: 'widgetEditController',
-                controllerAs: 'model'
-            })
-            .when('/user/:userId/website/:websiteId/page/:pageId/widget/HTML', {
+            .when('/user/:userId/website/:websiteId/page/:pageId/widget/new/:widgetType', {
                 templateUrl: 'views/widget/templates/widget-edit.view.client.html',
                 controller: 'widgetEditController',
                 controllerAs: 'model'
             })
-        "/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget.widgetType}}"
-            // .when('/widget/:widgetId', {
-            //     templateUrl: 'views/widget/templates/widget-image-edit.view.client.html',
-            //     controller: 'widgetListController',
+
+            // .when('/user/:userId/website/:websiteId/page/:pageId/widget/new/header', {
+            //     templateUrl: 'views/widget/templates/widget-heading-edit.view.client.html',
+            //     controller: 'widgetNewController',
             //     controllerAs: 'model'
             // })
+            // .when('/user/:userId/website/:websiteId/page/:pageId/widget/new/image', {
+            // templateUrl: 'views/widget/templates/widget-image-edit.view.client.html',
+            // controller: 'widgetNewController',
+            // controllerAs: 'model'
+            // })
+            // .when('/user/:userId/website/:websiteId/page/:pageId/widget/new/youtube', {
+            //     templateUrl: 'views/widget/templates/widget-youtube-edit.view.client.html',
+            //     controller: 'widgetNewController',
+            //     controllerAs: 'model'
+            // })
+
+
+            // .when('/user/:userId/website/:websiteId/page/:pageId/widget/YOUTUBE', {
+            //     templateUrl: 'views/widget/templates/widget-youtube-edit.view.client.html',
+            //     controller: 'widgetEditController',
+            //     controllerAs: 'model'
+            // })
+            // .when('/user/:userId/website/:websiteId/page/:pageId/widget/IMAGE', {
+            //     templateUrl: 'views/widget/templates/widget-image-edit.view.client.html',
+            //     controller: 'widgetEditController',
+            //     controllerAs: 'model'
+            // })
+            // .when('/user/:userId/website/:websiteId/page/:pageId/widget/HEADING', {
+            //     templateUrl: 'views/widget/templates/widget-heading-edit.view.client.html',
+            //     controller: 'widgetEditController',
+            //     controllerAs: 'model'
+            // })
+            // .when('/user/:userId/website/:websiteId/page/:pageId/widget/HTML', {
+            //     templateUrl: 'views/widget/templates/widget-edit.view.client.html',
+            //     controller: 'widgetEditController',
+            //     controllerAs: 'model'
+            // });
         }
 })();

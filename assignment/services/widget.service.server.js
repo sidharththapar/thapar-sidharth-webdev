@@ -76,30 +76,34 @@ function deleteWidget(req, res) {
 }
 
 function uploadImage(req, res) {
-
     var websiteId = req.body.websiteId;
     var pageId = req.body.pageId;
     var userId = req.body.userId;
+    if(req.body.widgetId === null){
+        var widgetId = (new Date()).getTime() + "";
+    } else{
+        var widgetId = req.body.widgetId;
+    }
 
-    var widgetId      = req.body.widgetId;
     var width         = req.body.width;
     var myFile        = req.file;
 
-    // var userId = req.body.userId;
-    // var websiteId = req.body.websiteId;
-    // var pageId = req.body.pageId;
+    if(myFile.originalname !== null){
+        var originalname  = myFile.originalname; // file name on user's computer
+    }
 
-    var originalname  = myFile.originalname; // file name on user's computer
+    var mimetype      = myFile.mimetype;
+    console.log(mimetype.split('-')[1]);
     var filename      = myFile.filename;     // new file name in upload folder
     var path          = myFile.path;         // full path of uploaded file
     var destination   = myFile.destination;  // folder where file is saved to
     var size          = myFile.size;
-    var mimetype      = myFile.mimetype;
 
-    widget={};
-    //widget = getWidgetById(widgetId);
+    widget = {_id: widgetId, widgetType: "IMAGE", pageId: pageId, width: width};
     widget.url = '/assignment/uploads/'+filename;
+    // +"."+mimetype.split('-')[1];
+    widgets.push(widget);
 
-    var callbackUrl   = "/assignment/index.html#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
+    var callbackUrl   = "/assignment/index.html#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget";
     res.redirect(callbackUrl);
 }
