@@ -11,14 +11,14 @@ widgetModel.findAllWidgets = findAllWidgets;
 widgetModel.findWidgetById = findWidgetById;
 widgetModel.deleteWidget = deleteWidget;
 widgetModel.updateWidget = updateWidget;
-widgetModel.reorderWidget = reorderWidget;
+// widgetModel.reorderWidget = reorderWidget;
 
 module.exports = widgetModel;
 
-function reorderWidget(pageId, start, end) {
-    return widgetModel
-        .find({: })
-}
+// function reorderWidget(pageId, start, end) {
+//     return widgetModel
+//         .find({: })
+// }
 
 function updateWidget(widgetId, newWidget) {
     return widgetModel.update({_id: widgetId}, {$set: newWidget});
