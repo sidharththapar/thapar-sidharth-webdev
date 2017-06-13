@@ -13,9 +13,11 @@
         model.websiteId = $routeParams['websiteId'];
         model.userId = $routeParams['userId'];
         model.pageId = $routeParams['pageId'];
-
-        model.widgetId = $routeParams['widgetId'];
-        model.widgetType = $routeParams['widgetType'];
+        if($routeParams.widgetId === undefined){
+            model.widgetType = $routeParams['widgetType'];
+        }else{
+            model.widgetId = $routeParams['widgetId'];
+        }
 
         model.createWidget = createWidget;
         model.deleteWidget = deleteWidget;
@@ -41,27 +43,25 @@
 
         function deleteWidget() {
             widgetService
-                .deleteWidget(model.widgetId)
+                .deleteWidget(model.pageId, model.widgetId)
                 .then(function () {
                     $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
                 });
         }
 
         function updateWidget(widget, widgetId) {
-            widget._id = widgetId;
-            widget.pageId = model.pageId;
+            widget._page = model.pageId;
             widgetService
-                .updateWidget(widget)
+                .updateWidget(widgetId, widget)
                 .then(function (page) {
                     $location.url('/user/'+ model.userId +'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
                 });
         }
 
         function createWidget(newWidget) {
-            newWidget.pageId = model.pageId;
-            newWidget.widgetType = model.widgetType;
+            newWidget.type = model.widgetType.toUpperCase();
             widgetService
-                .createWidget(newWidget)
+                .createWidget(model.pageId, newWidget)
                 .then(function (widget) {
                     $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+ model.pageId+'/widget');
                 });
@@ -78,11 +78,11 @@
         function widgetEditUrl(widgetId) {
             if ($routeParams['widgetId'] === undefined){
                 var url = 'views/widget/templates/widget-'+
-                    model.widgetType+'-edit.view.client.html';
+                    model.widgetType.toLowerCase()+'-edit.view.client.html';
             }
             if($routeParams['widgetType'] === undefined){
                 var url = 'views/widget/templates/widget-'+
-                    model.widget.widgetType.toLowerCase()+'-edit.view.client.html';
+                    model.widget.type.toLowerCase()+'-edit.view.client.html';
             }
             return url;
         }

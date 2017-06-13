@@ -3,11 +3,6 @@
         .module('WAM')
         .controller('widgetListController', widgetListController);
 
-        function init() {
-            pageService
-                .findAllPagesForWebsite(model.websiteId)
-
-    }
     function widgetListController($sce, widgetService, $routeParams, $location) {
         var model = this;
 
@@ -32,8 +27,8 @@
         }
 
         function widgetUrl(widget) {
-            var url = 'views/widget/templates/widget-'+
-                widget.widgetType.toLowerCase()+'.view.client.html';
+            var widgetType = widget.type;
+            var url = 'views/widget/templates/widget-'+widgetType.toLowerCase()+'.view.client.html';
             return url;
         }
 

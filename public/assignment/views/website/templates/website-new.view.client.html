@@ -43,7 +43,7 @@
                         Created
                     </div>
                     <div class="col-md-3 hidden-md">
-                        Accessed
+                        Owner
                     </div>
                     <div class="col-md-2 col-lg-1">
                     </div>
@@ -60,10 +60,10 @@
                         </a>
                     </div>
                     <div class="col-lg-3 hidden-md">
-                        {{website.created | date}}
+                        {{website.dateCreated | date : 'short'}}
                     </div>
                     <div class="col-md-3 hidden-md">
-                        {{website.accessed | date}}
+                        {{website._user.firstName}} {{website._user.lastName}}
                     </div>
                     <div class="col-md-2 col-lg-1">
                         <a href="#!/user/{{model.userId}}/website/{{website._id}}">

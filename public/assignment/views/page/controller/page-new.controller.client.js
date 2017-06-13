@@ -25,11 +25,10 @@
         }
 
         function createPage(newPage) {
-            newPage.websiteId = model.websiteId;
             pageService
-                .createPage(newPage)
+                .createPage(model.websiteId, newPage)
                 .then(function (page) {
-                    $location.url('/user/'+model.userId+'/website/'+page.websiteId+'/page');
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
                 });
         }
     }

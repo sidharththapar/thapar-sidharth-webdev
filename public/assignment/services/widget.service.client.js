@@ -11,16 +11,16 @@
         this.updateWidget = updateWidget;
 
 
-        function updateWidget(widget) {
-            var url = "/api/assignment/widget/"+widget._id;
+        function updateWidget(widgetId, widget) {
+            var url = "/api/assignment/widget/"+widgetId;
             return $http.put(url, widget)
                 .then(function (response) {
                     return response.data;
                 });
         }
 
-        function createWidget(widget) {
-            var url = "/api/assignment/page/"+widget.pageId+"/widget";
+        function createWidget(pageId, widget) {
+            var url = "/api/assignment/page/"+pageId+"/widget";
             return $http.post(url, widget)
                 .then(function (response) {
                     return response.data;
@@ -28,8 +28,8 @@
         }
 
 
-        function deleteWidget(widgetId) {
-            var url = "/api/assignment/widget/"+widgetId;
+        function deleteWidget(pageId, widgetId) {
+            var url = "/api/assignment/page/"+pageId+"/widget/"+widgetId;
             return $http.delete(url)
                 .then(function (response) {
                     return response.data;

@@ -35,18 +35,16 @@
 
         function deletePage(pageId) {
             pageService
-                .deletePage(pageId)
+                .deletePage(model.websiteId, pageId)
                 .then(function () {
                     $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
                 });
         }
 
         function updatePage(page, pageId) {
-            page._id = pageId;
-            page.websiteId = model.websiteId;
             pageService
-                .updatePage(page)
-                .then(function (website) {
+                .updatePage(pageId, page)
+                .then(function (page) {
                     $location.url('/user/'+ model.userId +'/website/'+model.websiteId+'/page');
                 });
         }

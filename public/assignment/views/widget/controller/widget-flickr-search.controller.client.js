@@ -4,13 +4,14 @@
         .controller('FlickrImageSearchController', FlickrImageSearchController);
 
 
-    function FlickrImageSearchController($sce, FlickrService, $routeParams, $location) {
+    function FlickrImageSearchController($sce, FlickrService, widgetService, $routeParams, $location) {
 
         var model = this;
         model.websiteId = $routeParams['websiteId'];
         model.userId = $routeParams['userId'];
         model.pageId = $routeParams['pageId'];
         model.searchPhotos = searchPhoto;
+        model.selectPhoto = selectPhoto;
 
         function searchPhoto(searchTerm) {
             FlickrService
@@ -24,12 +25,17 @@
                 });
         }
 
-        // function selectPhoto(photo) {
-        //     var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
-        //     url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
-        //     WidgetService
-        //         .updateWidget(websiteId, pageId, widgetId, {url: url})
-        //         .then(...);
-        // }
+        function selectPhoto(photo) {
+            var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
+            url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
+
+            var widget = {'url': url, 'type': 'IMAGE', width: '100%'};
+
+            widgetService
+                .createWidget(model.pageId, widget)
+                .then(function () {
+                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+                });
+        }
     }
 })();

@@ -23,11 +23,11 @@
         }
 
         function createWebsite(newWebsite) {
-            newWebsite.developerId = model.userId;
+            //newWebsite.developerId = model.userId;
             websiteService
-                .createWebsite(newWebsite)
-                .then(function (website) {
-                    $location.url('/user/'+ website.developerId +'/website');
+                .createWebsiteForUser(model.userId, newWebsite)
+                .then(function (status) {
+                    $location.url('/user/'+ model.userId +'/website');
                 });
         }
     }

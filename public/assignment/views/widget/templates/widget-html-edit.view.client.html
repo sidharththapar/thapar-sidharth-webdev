@@ -4,9 +4,7 @@
            href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
             <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
-        <a class="navbar-brand pull-left" href="#">
-            Widget Edit
-        </a>
+        <a class="navbar-brand pull-left" href="#">Widget Edit</a>
     </div>
     <div class="navbar-header col-xs-1">
         <a class="navbar-brand pull-right"
@@ -15,34 +13,13 @@
         </a>
     </div>
 </nav>
-
 <div class="container-fluid">
-
-    <label for="name">Name</label>
-    <input ng-model="model.widget.name"
-           class="form-control"
-           placeholder="facebook"
-           value="top heading"
-           id="name"/>
-
-    <label for="text">Text</label>
-    <input ng-model="model.widget.text"
-           class="form-control"
-           placeholder="facebook"
-           value="US Senate Reaches Compromise"
-           id="text"/>
-
-    <label for="size">Size</label>
-    <select ng-model="model.widget.size"
-            id="size"
-            class="form-control">
-        <option ng-value=1 >XXL</option>
-        <option ng-value=2> XL</option>
-        <option ng-value=3>LARGE</option>
-        <option ng-value=4>MEDIUM</option>
-        <option ng-value=5>SMALL</option>
-        <option ng-value=6>XS</option>
-    </select>
+    <div ng-model="model.widget.text"
+         text-angular
+         ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+            ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+            ['indent','outdent'],['html']]">
+    </div>
 
     <a ng-click="model.deleteWidget()"
        ng-show="{{model.widgetId}}"
@@ -59,7 +36,7 @@
        class="btn btn-block btn-success">
         Create
     </a>
-
 </div>
+
 
 <div ng-include="'views/common/footer.view.client.html'"></div>
