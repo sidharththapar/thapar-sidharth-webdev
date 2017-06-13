@@ -10,10 +10,21 @@ app.get    ("/api/assignment/widget/:widgetId", findWidgetById);
 app.post   ('/api/assignment/page/:pageId/widget', createWidget);
 app.put    ('/api/assignment/widget/:widgetId', updateWidget);
 app.delete ('/api/assignment/page/:pageId/widget/:widgetId', deleteWidget);
+app.put    ('/api/assignment/page/:pageId/widget?start=index1&end=index2', reorderWidget);
+
+function reorderWidget(req, res) {
+    var start = req.query.start;
+    var end = req.query.stop;
+    var pageId = req.params.pageId;
+    widgetModel
+        .reorderWidget(pageId, start, end)
+        .then(function (response) {
+            res.json(response)
+        });
+}
 
 function updateWidget(req, res) {
     var widget = req.body;
-    var widgetId = req.params.widgetId;
     widgetModel
         .updateWidget(widgetId, widget)
         .then(function (status) {

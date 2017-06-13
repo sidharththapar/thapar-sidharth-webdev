@@ -9,6 +9,14 @@
         this.deleteWidget = deleteWidget;
         this.createWidget = createWidget;
         this.updateWidget = updateWidget;
+        this.reorderWidget= reorderWidget;
+        
+        function reorderWidget(pageId, start, end) {
+            alert(start);
+            alert(end);
+            var url = "/page/"+pageId+"/widget?start="+start+"&end="+end;
+            $http.put(url);
+        }
 
 
         function updateWidget(widgetId, widget) {
