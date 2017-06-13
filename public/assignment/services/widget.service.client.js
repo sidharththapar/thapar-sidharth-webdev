@@ -12,10 +12,16 @@
         this.reorderWidget= reorderWidget;
         
         function reorderWidget(pageId, start, end) {
-            alert(start);
-            alert(end);
-            var url = "/page/"+pageId+"/widget?start="+start+"&end="+end;
-            $http.put(url);
+            var url = "/api/assignment/page/"
+                +pageId
+                +"/widget?index1="
+                +start
+                +"&index2="
+                +end;
+            return $http.put(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
 

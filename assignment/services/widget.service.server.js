@@ -10,11 +10,11 @@ app.get    ("/api/assignment/widget/:widgetId", findWidgetById);
 app.post   ('/api/assignment/page/:pageId/widget', createWidget);
 app.put    ('/api/assignment/widget/:widgetId', updateWidget);
 app.delete ('/api/assignment/page/:pageId/widget/:widgetId', deleteWidget);
-app.put    ('/api/assignment/page/:pageId/widget?start=index1&end=index2', reorderWidget);
+app.put    ('/api/assignment/page/:pageId/widget', reorderWidget);
 
 function reorderWidget(req, res) {
-    var start = req.query.start;
-    var end = req.query.stop;
+    var start = req.query.index1;
+    var end = req.query.index2;
     var pageId = req.params.pageId;
     widgetModel
         .reorderWidget(pageId, start, end)

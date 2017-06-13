@@ -13,15 +13,16 @@
             var end = -1;
             $(element)
                 .sortable({
-                    start: function(event, ui){
-                        start = ui.item.index()},
+                    start: function (event, ui) {
+                        start = ui.item.index();
+                    },
 
-                    stop: function(event, ui) {
+                    stop: function (event, ui) {
                         end = ui.item.index();
-                    widgetService
-                        .reorderWidget(pageId, start, end);
-                    }})
-
+                        widgetService
+                            .reorderWidget(pageId, start, end);
+                    }
+                });
         }
     }
 
