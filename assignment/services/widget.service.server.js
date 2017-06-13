@@ -60,6 +60,7 @@ function deleteWidget(req, res) {
 }
 
 function uploadImage(req, res) {
+    var widget = req.body;
     var websiteId = req.body.websiteId;
     var pageId = req.body.pageId;
     var userId = req.body.userId;
@@ -72,9 +73,7 @@ function uploadImage(req, res) {
     var width         = req.body.width;
     var myFile        = req.file;
 
-    if(myFile.originalname !== null){
-        var originalname  = myFile.originalname; // file name on user's computer
-    }
+    var originalname  = myFile.originalname; // file name on user's computer
 
     var mimetype      = myFile.mimetype;
     console.log(mimetype.split('-')[1]);
@@ -83,11 +82,13 @@ function uploadImage(req, res) {
     var destination   = myFile.destination;  // folder where file is saved to
     var size          = myFile.size;
 
-    widget = {_id: widgetId, widgetType: "IMAGE", pageId: pageId, width: width};
-    widget.url = '/assignment/uploads/'+filename;
-    // +"."+mimetype.split('-')[1];
+    var url = '/assignment/uploads/'+filename;
+    widget.type = "IMAGE";
+    widget.width = '100%';
+    widget.url =  url;
+
     widgetModel
-        .createWidget(widget)
+        .createWidget(pageId, widget)
         .then(function (widget) {
             res.json(widget);
         });
