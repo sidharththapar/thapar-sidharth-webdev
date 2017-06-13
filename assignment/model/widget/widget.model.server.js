@@ -16,6 +16,7 @@ widgetModel.reorderWidget = reorderWidget;
 module.exports = widgetModel;
 
 function reorderWidget(pageId, start, end) {
+
     return widgetModel
         .find({order: start})
         .then(function (widget) {
@@ -23,12 +24,13 @@ function reorderWidget(pageId, start, end) {
             widgetModel
                 .updateMany({order: {$gt: end}}, {$inc: {order: 1}})
                 .then(function (response) {
-                    console.log(response);
+                    //console.log(response);
                     widgetModel
                         .updateMany({order: {$gt: start}}, {$inc: {order: -1}})
                         .then(function (response) {
+                            //console.log(response);
                             widgetModel
-                                .update({_id: widget._id}, {order: end})
+                                .update({_id: widget._id}, {$set: {order: end}})
                         })
                 })
         });

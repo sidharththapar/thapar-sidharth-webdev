@@ -24,6 +24,7 @@ function reorderWidget(req, res) {
 }
 
 function updateWidget(req, res) {
+    var widgetId = req.params.widgetId;
     var widget = req.body;
     widgetModel
         .updateWidget(widgetId, widget)
