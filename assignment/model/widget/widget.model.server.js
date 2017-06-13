@@ -16,24 +16,21 @@ widgetModel.reorderWidget = reorderWidget;
 module.exports = widgetModel;
 
 function reorderWidget(pageId, start, end) {
-
-    return widgetModel
-        .find({order: start})
-        .then(function (widget) {
-            console.log(widget);
-            widgetModel
-                .updateMany({order: {$gt: end}}, {$inc: {order: 1}})
-                .then(function (response) {
-                    //console.log(response);
-                    widgetModel
-                        .updateMany({order: {$gt: start}}, {$inc: {order: -1}})
-                        .then(function (response) {
-                            //console.log(response);
-                            widgetModel
-                                .update({_id: widget._id}, {$set: {order: end}})
-                        })
-                })
-        });
+    if (start < end) {
+        return widgetModel
+            .updateMany({$and: [{order: {$gt: start}}, {order: {$lte: end}}]}, {$inc: {order: -1}})
+            .then(function (res) {
+                return widgetModel
+                    .update({order: start}, {$set: {order: end}})
+            });
+    } else {
+        return widgetModel
+            .updateMany({$and: [{order: {$gte: end}}, {order: {$lt: start}}]}, {$inc: {order: 1}})
+            .then(function (res) {
+                return widgetModel
+                    .update({order: start}, {$set: {order: end}})
+            });
+    }
 }
 
 
