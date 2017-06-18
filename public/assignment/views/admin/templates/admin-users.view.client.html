@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    <h1>Users</h1>
+    <div class="col-sm-1"></div>
+    <ul class="list-group col-xs-10">
+        <li class="list-group-item active">
+            <div class="row">
+                <div class="col-xs-6 col-lg-2 ">
+                    Username
+                </div>
+                <div class="col-lg-2 hidden-sm hidden-xs hidden-md">
+                    First Name
+                </div>
+                <div class="col-lg-2 hidden-sm hidden-xs hidden-md">
+                    Last Name
+                </div>
+                <div class="col-lg-2 hidden-sm hidden-xs hidden-md">
+                    Roles
+                </div>
+                <div class="col-xs-6 col-lg-4"></div>
+            </div>
+        </li>
+
+        <li class="list-group-item ">
+            <div class="row">
+                <div class="col-xs-6 col-lg-2 ">
+                    <input ng-model="model.user.username"
+                           class="form-control" />
+                </div>
+                <div class="col-lg-2 hidden-sm hidden-xs hidden-md">
+                    <input ng-model="model.user.firstName"
+                           class="form-control" />
+                </div>
+                <div class="col-lg-2 hidden-sm hidden-xs hidden-md">
+                    <input ng-model="model.user.lastName"
+                           class="form-control" />
+                </div>
+                <div class="col-lg-2 hidden-sm hidden-xs hidden-md">
+                    <div class="checkbox form-control">
+                        <label><input type="checkbox" value="">USER</label>
+                    </div>
+                    <div class="checkbox disabled form-control">
+                        <label><input type="checkbox" value="">ADMIN</label>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-lg-4">
+                    <span ng-click="model.createUser(model.user); model.user={}"
+                          class="glyphicon glyphicon-plus"></span>
+                    <span ng-click="model.updateUser(model.user); model.user={}"
+                          class="glyphicon glyphicon-ok pull-right"></span>
+                </div>
+            </div>
+        </li>
+
+        <li ng-repeat="user in model.users" class="list-group-item">
+            <div class="row">
+                <div class="col-xs-6 col-lg-2">
+                    {{user.username}}
+                </div>
+                <div class="col-lg-2 hidden-sm hidden-xs hidden-md">
+                    {{user.firstName}}
+                </div>
+                <div class="col-lg-2 hidden-sm hidden-xs hidden-md">
+                    {{user.lastName}}
+                </div>
+                <div class="col-lg-2 hidden-sm hidden-xs hidden-md">
+                    {{user.roles}}
+                </div>
+
+                <div class="col-xs-6 col-lg-4">
+                    <a href="">
+                        <span ng-click="model.editUser(user)"
+                              class="glyphicon glyphicon-pencil"></span>
+                        <span ng-click="model.deleteUser(user)"
+                              class="glyphicon glyphicon-remove pull-right"></span>
+                    </a>
+                </div>
+
+            </div>
+        </li>
+    </ul>
+</div>

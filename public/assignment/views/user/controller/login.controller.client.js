@@ -11,10 +11,10 @@
 
         function login(username, password) {
             userService
-                .findUserByCredentials(username, password)
+                .login(username, password)
                 .then(function (found) {
                     if(found !== null) {
-                        $location.url('/user/' + found._id);
+                        $location.url('/profile');
                     } else {
                         model.message = "sorry, " + username + " not found. please try again!";
                     }

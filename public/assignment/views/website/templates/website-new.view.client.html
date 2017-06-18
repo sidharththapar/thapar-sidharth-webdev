@@ -2,20 +2,20 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-header hidden-sm hidden-xs col-md-4">
         <a class="navbar-brand pull-left"
-           href="#!/user/{{model.userId}}/website">
+           href="#!/website">
             <span class="glyphicon glyphicon-chevron-left"></span></a>
         <a class="navbar-brand pull-left">Websites</a>
     </div>
     <div class="navbar-header col-xs-9 hidden-md hidden-lg">
         <a class="navbar-brand pull-left"
-           href="#!/user/{{model.userId}}/website">
+           href="#!/website">
             <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
         <a class="navbar-brand pull-left">New Website</a>
     </div>
     <div class="navbar-header hidden-sm hidden-xs col-md-1">
         <a class="navbar-brand pull-right"
-           href="#!/user/{{model.userId}}/website/new">
+           href="#!/website/new">
             <span class="glyphicon glyphicon-plus"></span>
         </a>
     </div>
@@ -55,7 +55,7 @@
                 class="list-group-item">
                 <div class="row">
                     <div class="col-md-10 col-lg-5">
-                        <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">
+                        <a href="#!/website/{{website._id}}/page">
                             {{website.name}}
                         </a>
                     </div>
@@ -66,7 +66,7 @@
                         {{website._user.firstName}} {{website._user.lastName}}
                     </div>
                     <div class="col-md-2 col-lg-1">
-                        <a href="#!/user/{{model.userId}}/website/{{website._id}}">
+                        <a href="#!/website/{{website._id}}">
                             <span class="glyphicon glyphicon-cog pull-right"></span>
                         </a>
                     </div>

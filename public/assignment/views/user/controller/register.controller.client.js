@@ -3,10 +3,9 @@
         .module('WAM')
         .controller('registerController', registerController);
 
-    function registerController($location, userService) {
+    function registerController($location, userService, $rootScope) {
 
         var model = this;
-
         model.register = register;
 
         function register(username, password, password2) {
@@ -34,21 +33,22 @@
             userService
                 .findUserByUsername(username)
                 .then(
-                    function () {
-                        model.error = "sorry, that username is taken";
+                    function (user) {
+                        model.error = "Sorry, "+username+" is taken";
                     },
-                    function () {
+                    function (response) {
                         var newUser = {
                             username: username,
                             password: password
                         };
                         return userService
-                            .createUser(newUser);
+                            .register(newUser)
+                            .then(function () {
+                                $rootScope.currentUser = user;
+                                $location.url('/profile');
+                            });
                     }
                 )
-                .then(function (user) {
-                    $location.url('/user/' + user._id);
-                });
         }
     }
 })();
