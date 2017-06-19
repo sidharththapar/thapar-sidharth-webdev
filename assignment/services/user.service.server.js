@@ -36,8 +36,8 @@ app.get('/auth/google',
 
 app.get('/auth/google/callback',
     passport.authenticate('google', {
-        successRedirect: 'assignment/index.html#!/profile',
-        failureRedirect: 'assignment/index.html#!/login'
+        successRedirect: '/profile',
+        failureRedirect: '/login'
     }));
 
 function isAdmin(req, res, next) {
