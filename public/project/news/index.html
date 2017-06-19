@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="newsApp">
+<head>
+    <link href="../../assignment/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../../assignment/vendor/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"/>
+    <script src="../../assignment/vendor/angular/angular.min.js"></script>
+    <script src="news.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div ng-controller="newsController as model"
+         class="container-fluid">
+        <h1>NEWS API</h1>
+
+        <div class="row">
+            <div class="col-xs-4">
+                <h2>Search</h2>
+
+                <label for="category">Choose Category</label>
+                <select ng-model="model.category"
+                        id="category"
+                        class="form-control">
+                    <option value="financial-times">Business</option>
+                    <option value="polygon">Gaming</option>
+                    <option value="bbc-sport">Sports</option>
+                    <option value="techradar">Technology</option>
+                </select>
+                <button ng-click="model.searchNewsByCategory(model.category)"
+                        class="btn btn-primary btn-block">
+                    Search
+                </button>
+                <h2>Results</h2>
+                <ul class="list-group">
+                    <li ng-click="model.searchNewsDetails(article)"
+                        ng-repeat="article in model.news"
+                        class="list-group-item">
+                        {{article.title}}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-8">
+                <h2>{{model.article.title}}</h2>
+                <blockquote>
+                    <p>
+                        {{model.article.description}}
+                    </p>
+                    <footer>
+                        <a href="{{model.article.url}}">
+                            {{model.article.url}}
+                        </a>
+                    </footer>
+                </blockquote>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
