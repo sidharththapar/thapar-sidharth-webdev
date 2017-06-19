@@ -8,7 +8,6 @@
         var model = this;
 
         model.websiteId = $routeParams['websiteId'];
-        model.userId = $routeParams['userId'];
 
         function init() {
             pageService

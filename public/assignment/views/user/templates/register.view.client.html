@@ -5,38 +5,72 @@
         {{model.error}}
     </div>
 
-    <label for="username">
-        Username
-    </label>
-    <input type="text"
-           ng-model="username"
-           id="username"
-           class="form-control"
-           placeholder="username"/>
+    <form name="registerForm"
+          ng-submit="model.register(registerForm.$valid, model.username, model.password, model.password2)"
+          novalidate>
 
-    <label for="password">
-        Password
-    </label>
-    <input type="password"
-           ng-model="password"
-           id="password"
-           class="form-control"
-           placeholder="password"/>
+        <div class="form-group"
+             ng-class="{ 'has-error' : registerForm.uname.$invalid && !registerForm.uname.$pristine && model.submitted}">
+            <label for="username">
+                Username
+            </label>
+            <input type="text"
+                   name="uname"
+                   ng-model="model.username"
+                   id="username"
+                   class="form-control form-group"
+                   placeholder="username"
+                   required>
+            <p ng-show="registerForm.uname.$invalid && !registerForm.uname.$pristine && model.submitted"
+               class="help-block">
+                Username is required.
+            </p>
+        </div>
 
-    <label for="password2">
-        Re-enter Password
-    </label>
-    <input type="password"
-           ng-model="password2"
-           id="password2"
-           class="form-control"
-           placeholder="re-enter and verify password"/>
-    <a ng-click="model.register(username, password, password2)"
-       class="btn btn-primary btn-block">
-        Register
-    </a>
-    <a class="btn btn-danger  btn-block"
-       href="#!/login">
-        Cancel
-    </a>
+        <div class="form-group"
+             ng-class="{ 'has-error' : registerForm.pass.$invalid && !registerForm.pass.$pristine && model.submitted}">
+            <label for="password">
+                Password
+            </label>
+            <input type="password"
+                   name="pass"
+                   ng-model="model.password"
+                   id="password"
+                   class="form-control form-group"
+                   placeholder="password"
+                   ng-required="true"
+                   >
+            <p ng-show="registerForm.password.$invalid && !registerForm.password.$pristine && model.submitted"
+               class="help-block">
+                Password is required.
+            </p>
+        </div>
+
+        <div class="form-group"
+             ng-class="{ 'has-error' : registerForm.verify.$invalid && !registerForm.verify.$pristine && model.submitted}">
+            <label for="password2">
+                Re-enter Password
+            </label>
+            <input type="password"
+                   name="verify"
+                   ng-model="model.password2"
+                   id="password2"
+                   class="form-control form-group"
+                   placeholder="re-enter and verify password"
+                   required>
+            <p ng-show="registerForm.verify.$invalid && !registerForm.verify.$pristine && model.submitted"
+               class="help-block">
+                Re-enter Password.
+            </p>
+        </div>
+
+        <button type="submit"
+           class="btn btn-primary btn-block">
+            Register
+        </button>
+        <a class="btn btn-danger  btn-block"
+           href="#!/login">
+            Cancel
+        </a>
+    </form>
 </div>

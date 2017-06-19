@@ -2,13 +2,13 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-header hidden-sm hidden-xs col-md-4">
         <a class="navbar-brand pull-left"
-           href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+           href="#!/website/{{model.websiteId}}/page">
             <span class="glyphicon glyphicon-chevron-left"></span></a>
         <a class="navbar-brand pull-left">Pages</a>
     </div>
     <div class="navbar-header col-xs-9 hidden-md hidden-lg">
         <a class="navbar-brand pull-left"
-           href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+           href="#!/website/{{model.websiteId}}/page">
             <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
         <a class="navbar-brand pull-left">New Page</a>
@@ -54,7 +54,7 @@
                 class="list-group-item">
                 <div class="row">
                     <div class="col-md-10 col-lg-5">
-                        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
+                        <a href="#!/website/{{model.websiteId}}/page/{{page._id}}/widget">
                             {{page.name}}
                         </a>
                     </div>
@@ -65,7 +65,7 @@
                         {{page.accessed | date}}
                     </div>
                     <div class="col-md-2 col-lg-1">
-                        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
+                        <a href="#!/website/{{model.websiteId}}/page/{{page._id}}">
                             <span class="glyphicon glyphicon-cog pull-right"></span>
                         </a>
                     </div>
@@ -77,26 +77,44 @@
 
 <div class="container-fluid col-xs-12 col-md-7">
     <div class="container-fluid">
-        <label for="name">Name</label>
-        <input class="form-control"
-               ng-model="page.name"
-               placeholder="facebook"
-               value="Blogger"
-               id="name"/>
+        <div ng-show="model.error" class="alert alert-danger">
+            {{model.error}}
+        </div>
+        <form name="userForm"
+              ng-submit="model.createPage(userForm.$valid, page)"
+              novalidate>
 
-        <label for="title">Title</label>
-        <input class="form-control"
-               id="title"
-               ng-model="page.title"
-               rows="5"
-               placeholder="So big it is its own country">
-        </input>
+            <div class="form-group"
+                 ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine && model.submitted}">
+                <label for="name">
+                    Name
+                </label>
+                <input class="form-control"
+                       name="name"
+                       ng-model="page.name"
+                       placeholder="facebook"
+                       value="Blogger"
+                       id="name"
+                       required/>
+                <p ng-show="userForm.name.$invalid && !userForm.name.$pristine && model.submitted" class="help-block">
+                    Name is required.
+                </p>
+            </div>
 
-        <a ng-click="model.createPage(page)"
-           class="btn btn-block btn-success">
-            Create
-        </a>
+            <label for="title">
+                Title
+            </label>
+            <input class="form-control"
+                   id="title"
+                   ng-model="page.title"
+                   rows="5"
+                   placeholder="So big it is its own country">
 
+            <button type="submit"
+               class="btn btn-block btn-success">
+                Create
+            </button>
+        </form>
     </div>
 </div>
 

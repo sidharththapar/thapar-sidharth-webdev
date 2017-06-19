@@ -81,34 +81,49 @@
     </div>
 </div>
 
+
 <div class="container-fluid col-xs-12 col-md-7">
     <div class="container-fluid">
-        <label for="name">Name</label>
-        <input class="form-control"
-               ng-model="model.website.name"
-               placeholder="facebook"
-               value="Blogger"
-               id="name"/>
+        <form name="userForm"
+              ng-submit="model.updateWebsite(userForm.$valid, model.website, model.websiteId)"
+              novalidate>
+            <div ng-show="model.error" class="alert alert-danger">
+                {{model.error}}
+            </div>
+            <div class="form-group"
+                 ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine && model.submitted}">
 
-      <label for="description">Description</label>
-        <textarea id="description"
-                  ng-model="model.website.description"
-                  rows="5"
-                  placeholder="So big it is its own country"
-                  class="form-control">
-        </textarea>
+                <label for="name">Name</label>
+                <input class="form-control"
+                       name="name"
+                       ng-model="model.website.name"
+                       placeholder="facebook"
+                       value="Blogger"
+                       id="name"
+                       required/>
+                <p ng-show="userForm.name.$invalid && !userForm.name.$pristine && model.submitted" class="help-block">
+                    Name is required.
+                </p>
+            </div>
 
-        <a ng-click="model.deleteWebsite(model.websiteId)"
-           class="btn btn-block btn-danger">
-            Delete
-        </a>
-
-        <a ng-click="model.updateWebsite(model.website, model.websiteId)"
-           class="btn btn-block btn-success">
-            Update
-        </a>
-
-
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description"
+                          ng-model="model.website.description"
+                          rows="5"
+                          placeholder="So big it is its own country"
+                          class="form-control">
+                </textarea>
+            </div>
+            <button type="submit"
+                    class="btn btn-block btn-success">
+                Update
+            </button>
+            <a ng-click="model.deleteWebsite(model.websiteId)"
+               class="btn btn-block btn-danger">
+                Delete
+            </a>
+        </form>
     </div>
 </div>
 

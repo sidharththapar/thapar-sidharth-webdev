@@ -11,7 +11,6 @@
         model.widgetEditUrl = widgetEditUrl;
 
         model.websiteId = $routeParams['websiteId'];
-        model.userId = $routeParams['userId'];
         model.pageId = $routeParams['pageId'];
         if($routeParams.widgetId === undefined){
             model.widgetType = $routeParams['widgetType'];
@@ -38,33 +37,44 @@
         init();
 
         function openFlickrSearch() {
-            $location.path("/user/"+model.userId+"/website/"+model.websiteId+"/page/"+model.pageId+"/widget/search");
+            $location.path("/website/"+model.websiteId+"/page/"+model.pageId+"/widget/search");
         }
 
         function deleteWidget() {
             widgetService
                 .deleteWidget(model.pageId, model.widgetId)
                 .then(function () {
-                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+                    $location.url('/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
                 });
         }
 
-        function updateWidget(widget, widgetId) {
-            widget._page = model.pageId;
-            widgetService
-                .updateWidget(widgetId, widget)
-                .then(function (page) {
-                    $location.url('/user/'+ model.userId +'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
-                });
+        function updateWidget(isValid, widget, widgetId) {
+            model.submitted = true;
+            if (isValid) {
+                widget._page = model.pageId;
+                widgetService
+                    .updateWidget(widgetId, widget)
+                    .then(function (page) {
+                        $location.url('/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+                    });
+            }else {
+                model.error = 'One or more fields are required';
+            }
         }
 
-        function createWidget(newWidget) {
-            newWidget.type = model.widgetType.toUpperCase();
-            widgetService
-                .createWidget(model.pageId, newWidget)
-                .then(function (widget) {
-                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+ model.pageId+'/widget');
-                });
+        function createWidget(isValid, newWidget) {
+            model.submitted = true;
+            if (isValid) {
+                newWidget.type = model.widgetType.toUpperCase();
+                widgetService
+                    .createWidget(model.pageId, newWidget)
+                    .then(function (widget) {
+                        $location.url('/website/' + model.websiteId + '/page/' + model.pageId + '/widget');
+                    });
+            }
+            else {
+                    model.error = 'One or more fields are required';
+                }
         }
 
         function renderWidget(widget) {

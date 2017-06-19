@@ -3,10 +3,9 @@
         .module('WAM')
         .controller('websiteNewController', websiteNewController);
     
-    function websiteNewController($routeParams,
-                                   currentUser,
-                                   $location,
-                                   websiteService) {
+    function websiteNewController(currentUser,
+                                  $location,
+                                  websiteService) {
         var model = this;
         model.userId = currentUser._id;
         model.createWebsite = createWebsite;
@@ -22,13 +21,18 @@
             model.websites = websites;
         }
 
-        function createWebsite(newWebsite) {
-            //newWebsite.developerId = model.userId;
-            websiteService
-                .createWebsiteForUser(model.userId, newWebsite)
-                .then(function (status) {
-                    $location.url('/website');
-                });
+        function createWebsite(isValid, newWebsite) {
+            model.submitted = true;
+            if (isValid) {
+                websiteService
+                    .createWebsiteForUser(model.userId, newWebsite)
+                    .then(function (status) {
+                        $location.url('/website');
+                    });
+            }
+            else {
+                model.error = 'One or more fields are required';
+            }
         }
     }
 })();

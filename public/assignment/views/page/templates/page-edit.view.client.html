@@ -2,20 +2,20 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-header hidden-sm hidden-xs col-md-4">
         <a class="navbar-brand pull-left"
-           href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+           href="#!/website/{{model.websiteId}}/page">
             <span class="glyphicon glyphicon-chevron-left"></span></a>
         <a class="navbar-brand pull-left">Pages</a>
     </div>
     <div class="navbar-header col-xs-9 hidden-md hidden-lg">
         <a class="navbar-brand pull-left"
-           href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+           href="#!/website/{{model.websiteId}}/page">
             <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
         <a class="navbar-brand pull-left">Edit Page</a>
     </div>
     <div class="navbar-header hidden-sm hidden-xs col-md-1">
         <a class="navbar-brand pull-right"
-           href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new">
+           href="#!/website/{{model.websiteId}}/page/new">
             <span class="glyphicon glyphicon-plus"></span>
         </a>
     </div>
@@ -53,7 +53,7 @@
                 class="list-group-item">
                 <div class="row">
                     <div class="col-md-10 col-lg-5">
-                        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
+                        <a href="#!/website/{{model.websiteId}}/page/{{page._id}}/widget">
                             {{page.name}}
                         </a>
                     </div>
@@ -64,7 +64,7 @@
                         {{page.accessed | date}}
                     </div>
                     <div class="col-md-2 col-lg-1">
-                        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
+                        <a href="#!/website/{{model.websiteId}}/page/{{page._id}}">
                             <span class="glyphicon glyphicon-cog pull-right"></span>
                         </a>
                     </div>
@@ -76,31 +76,43 @@
 
 <div class="container-fluid col-xs-12 col-md-7">
     <div class="container-fluid">
-        <label for="name">Name</label>
-        <input class="form-control"
-               ng-model="model.page.name"
-               placeholder="facebook"
-               value="Blogger"
-               id="name"/>
+        <form name="userForm"
+              ng-submit="model.updatePage(userForm.$valid, model.page, model.pageId)"
+              novalidate>
 
-        <label for="title">Title</label>
-        <input class="form-control"
-               id="title"
-               ng-model="model.page.title"
-               rows="5"
-               placeholder="So big it is its own country">
-        </input>
+            <div class="form-group"
+                 ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine && model.submitted}">
 
-        <a ng-click="model.deletePage(model.pageId)"
-           class="btn btn-block btn-danger">
-            Delete
-        </a>
+                <label for="name">Name</label>
+                <input class="form-control"
+                       name="name"
+                       ng-model="model.page.name"
+                       placeholder="facebook"
+                       value="Blogger"
+                       id="name"
+                       required/>
+                <p ng-show="userForm.name.$invalid && !userForm.name.$pristine && model.submitted" class="help-block">
+                    Name is required.
+                </p>
+            </div>
 
-        <a ng-click="model.updatePage(model.page, model.pageId)"
-           class="btn btn-block btn-success">
-            Update
-        </a>
+            <label for="title">Title</label>
+            <input class="form-control"
+                   id="title"
+                   ng-model="model.page.title"
+                   rows="5"
+                   placeholder="So big it is its own country">
 
+            <a ng-click="model.deletePage(model.pageId)"
+               class="btn btn-block btn-danger">
+                Delete
+            </a>
+
+            <button type="submit"
+                    class="btn btn-block btn-success">
+                Update
+            </button>
+        </form>
     </div>
 </div>
 

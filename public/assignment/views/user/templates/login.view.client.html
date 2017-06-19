@@ -4,33 +4,61 @@
     <div ng-show="model.message" class="alert alert-info">
         {{model.message}}
     </div>
+    <div ng-show="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
 
-    <label for="username">Username</label>
-    <input ng-model="username"
-           type="text"
-           id="username"
-           class="form-control"
-           placeholder="Sample Username: bob123"/>
+    <form name="userForm"
+          ng-submit="model.login(userForm.$valid)"
+          novalidate>
 
-    <label for="password">Password</label>
-    <input ng-model="password"
-           type="password"
-           id="password"
-           class="form-control"
-           placeholder="Sample Password: qwer1234zxcv"/>
+        <div class="form-group"
+             ng-class="{ 'has-error' : userForm.uname.$invalid && !userForm.uname.$pristine && model.submitted}">
+            <label for="username">Username</label>
+            <input ng-model="model.username"
+                   name="uname"
+                   type="text"
+                   id="username"
+                   class="form-control"
+                   placeholder="Sample Username: bob123"
+                   autocorrect="off"
+                   autocapitalize="off"
+                   required>
+            <p ng-show="userForm.uname.$invalid && !userForm.uname.$pristine && model.submitted" class="help-block">
+                Username is required.
+            </p>
+        </div>
 
-    <a ng-click="model.login(username, password)"
-       class="btn btn-primary btn-block">
-        Login
-    </a>
+        <div class="form-group"
+             ng-class="{ 'has-error' : userForm.pass.$invalid && !userForm.pass.$pristine && model.submitted}">
 
-    <a class="btn btn-success btn-block"
-       href="#!/register">
-        Register
-    </a>
+            <label for="password">Password</label>
+            <input ng-model="model.password"
+                   type="password"
+                   name="pass"
+                   id="password"
+                   class="form-control"
+                   placeholder="Sample Password: qwer1234zxcv"
+                   required>
+            <p ng-show="userForm.pass.$invalid && !userForm.pass.$pristine && model.submitted"
+               class="help-block">
+                Password is required.
+            </p>
+        </div>
 
-    <a href="/auth/google" class="btn btn-danger btn-block">
-        <span class="fa fa-google-plus"></span>
-        Google
-    </a>
+        <button type="submit"
+                class="btn btn-primary btn-block">
+            Login
+        </button>
+
+        <a class="btn btn-success btn-block"
+           href="#!/register">
+            Register
+        </a>
+
+        <a href="/auth/google" class="btn btn-danger btn-block">
+            <span class="fa fa-google-plus"></span>
+            Google
+        </a>
+    </form>
 </div>

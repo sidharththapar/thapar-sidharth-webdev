@@ -4,11 +4,10 @@
         .controller('pageEditController', pageEditController);
     
     function pageEditController($routeParams,
-                                   $location,
-                                   pageService) {
+                                $location,
+                                pageService) {
         var model = this;
 
-        model.userId = $routeParams['userId'];
         model.websiteId = $routeParams['websiteId'];
         model.pageId = $routeParams['pageId'];
         model.deletePage = deletePage;
@@ -37,16 +36,22 @@
             pageService
                 .deletePage(model.websiteId, pageId)
                 .then(function () {
-                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+                    $location.url('/website/'+model.websiteId+'/page');
                 });
         }
 
-        function updatePage(page, pageId) {
-            pageService
-                .updatePage(pageId, page)
-                .then(function (page) {
-                    $location.url('/user/'+ model.userId +'/website/'+model.websiteId+'/page');
-                });
+        function updatePage(isValid, page, pageId) {
+            model.submitted = true;
+            if (isValid) {
+                pageService
+                    .updatePage(pageId, page)
+                    .then(function (page) {
+                        $location.url('/website/'+model.websiteId+'/page');
+                    });
+            }
+            else {
+                model.error = 'One or more fields are required';
+            }
         }
     }
 })();

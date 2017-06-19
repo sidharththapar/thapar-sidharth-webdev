@@ -8,7 +8,6 @@
 
         var model = this;
         model.websiteId = $routeParams['websiteId'];
-        model.userId = $routeParams['userId'];
         model.pageId = $routeParams['pageId'];
         model.searchPhotos = searchPhoto;
         model.selectPhoto = selectPhoto;
@@ -34,7 +33,7 @@
             widgetService
                 .createWidget(model.pageId, widget)
                 .then(function () {
-                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+                    $location.url('/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
                 });
         }
     }

@@ -4,11 +4,10 @@
         .controller('pageNewController', pageNewController);
     
     function pageNewController($routeParams,
-                                   $location,
-                                   pageService) {
+                               $location,
+                               pageService) {
         var model = this;
 
-        model.userId = $routeParams['userId'];
         model.websiteId = $routeParams['websiteId'];
         model.createPage = createPage;
 
@@ -24,12 +23,18 @@
             model.pages = pages;
         }
 
-        function createPage(newPage) {
-            pageService
-                .createPage(model.websiteId, newPage)
-                .then(function (page) {
-                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
-                });
+        function createPage(isValid, newPage) {
+            model.submitted = true;
+            if (isValid) {
+                pageService
+                    .createPage(model.websiteId, newPage)
+                    .then(function (page) {
+                        $location.url('/website/'+model.websiteId+'/page');
+                    });
+            }
+            else {
+                model.error = 'One or more fields are required';
+            }
         }
     }
 })();

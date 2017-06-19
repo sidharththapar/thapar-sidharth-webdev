@@ -4,6 +4,10 @@ select.form-control {
     margin-bottom: 10px;
 }
 
+.ng-invalid-required{
+
+}
+
 #sortList{
     padding: 0;
     margin: 0;

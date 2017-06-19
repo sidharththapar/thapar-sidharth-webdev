@@ -3,14 +3,13 @@
         .module('WAM')
         .controller('widgetNewController', widgetNewController);
 
-    function widgetNewController($sce, widgetService, $routeParams, $location) {
+    function widgetNewController($sce, widgetService, $routeParams) {
         var model = this;
 
         model.trust = trust;
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
 
         model.websiteId = $routeParams['websiteId'];
-        model.userId = $routeParams['userId'];
         model.pageId = $routeParams['pageId'];
         model.widgetType = $routeParams['widgetType'];
 

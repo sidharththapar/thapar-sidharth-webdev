@@ -41,13 +41,19 @@
                 });
         }
 
-        function updateWebsite(website, websiteId) {
-            websiteService
-                .updateWebsite(websiteId, website)
-                .then(function (website) {
-                    $location.url('/website');
-                });
+        function updateWebsite(isValid, website, websiteId) {
+            model.submitted = true;
+            if (isValid) {
+                websiteService
+                    .updateWebsite(websiteId, website)
+                    .then(function (website) {
+                        $location.url('/website');
+                    });
 
+            }
+            else {
+                model.error = 'One or more fields are required';
+            }
         }
     }
 })();
