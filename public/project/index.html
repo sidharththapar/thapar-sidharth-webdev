@@ -1,14 +1,91 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="WAM">
 <head>
-    <meta charset="UTF-8">
-    <title>Project Home Page</title>
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/angular/angular-route.min.js"></script>
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="vendor/jquery/jquery-ui.min.js"></script>
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <script src="directives/wam-directives.js"></script>
+
+
+
+    <!-- home --->
+    <script src="views/home/controller/main.controller.client.js"></script>
+
+    <!-- admin --->
+    <script src="views/admin/controller/admin-users.controller.client.js"></script>
+    <!-- user -->
+    <script src="views/user/controller/login.controller.client.js"></script>
+    <script src="views/user/controller/profile.controller.client.js"></script>
+    <script src="views/user/controller/register.controller.client.js"></script>
+    <script src="services/user.service.client.js"></script>
+
+    <!-- website -->
+    <script src="views/website/controller/website-list.controller.client.js"></script>
+    <script src="views/website/controller/website-edit.controller.client.js"></script>
+    <script src="views/website/controller/website-new.controller.client.js"></script>
+    <script src="services/website.service.client.js"></script>
+
+
+    <!-- page -->
+    <script src="views/page/controller/page-list.controller.client.js"></script>
+    <script src="views/page/controller/page-edit.controller.client.js"></script>
+    <script src="views/page/controller/page-new.controller.client.js"></script>
+    <script src="services/page.service.client.js"></script>
+
+    <!-- widget -->
+    <script src="views/widget/controller/widget-list.controller.client.js"></script>
+    <script src="views/widget/controller/widget-edit.controller.client.js"></script>
+    <script src="views/widget/controller/widget-new.controller.client.js"></script>
+    <script src="services/widget.service.client.js"></script>
+
+    <!--flickr -->
+    <script src="views/widget/controller/widget-flickr-search.controller.client.js"></script>
+    <script src="services/flickr.service.client.js"></script>
+
+    <!--textAngular-->
+    <script src="vendor/textAngular/js/textAngular-rangy.min.js"></script>
+    <script src="vendor/textAngular/js/textAngular-sanitize.min.js"></script>
+    <script src="vendor/textAngular/js/textAngular.min.js"></script>
+    <link href="vendor/textAngular/css/textAngular.css" rel="stylesheet">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="m9rBqvb7OH5N-RRBTkU8CJCKxry0SFFEZcIBTlJXr0I" />
+
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="Sidharth Thapar">
+    <link rel="icon" href="../../favicon.ico">
+
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+    <title>Theme Template for Bootstrap</title>
+
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="vendor/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="vendor/bootstrap/theme.css" rel="stylesheet">
 </head>
+
 <body>
-    Problem Statement: 
-    Proposed Solution:
-    Potential users and roles:
-    Domain objects:
-    High level use cases:
+
+<div ng-view>
+
+</div>
+
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
 </body>
 </html>

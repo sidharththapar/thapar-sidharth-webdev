@@ -39,9 +39,17 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-xs-8">
-                <h2>{{model.article.title}}</h2>
-                <blockquote>
+            <div class="col-xs-8 list-group">
+
+                <h2 class="list-group-item-heading">
+                    {{model.article.title}}
+                </h2>
+
+                <img class="list-group-item"
+                     ng-src="{{model.article.urlToImage}}"
+                     width="100%"/>
+
+                <blockquote class="list-group-item">
                     <p>
                         {{model.article.description}}
                     </p>
@@ -51,7 +59,6 @@
                         </a>
                     </footer>
                 </blockquote>
-
             </div>
         </div>
     </div>
