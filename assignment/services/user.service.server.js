@@ -6,8 +6,8 @@ passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
-// var bcrypt = require("bcrypt-nodejs");
-// var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var bcrypt = require("bcrypt-nodejs");
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 // var googleConfig = {
 //     clientID     : '222671963957-205m5fibvtpc223bpdsid045fd4vjg1u.apps.googleusercontent.com',
 //     clientSecret : 'Gm8CnkQKjc4_SkE9-naJmnGa',
