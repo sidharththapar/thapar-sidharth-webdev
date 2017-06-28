@@ -6,18 +6,18 @@ passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
-var bcrypt = require("bcrypt-nodejs");
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-var googleConfig = {
-    clientID     : '222671963957-205m5fibvtpc223bpdsid045fd4vjg1u.apps.googleusercontent.com',
-    clientSecret : 'Gm8CnkQKjc4_SkE9-naJmnGa',
-    callbackURL  : '/auth/google/callback'
-};
+// var bcrypt = require("bcrypt-nodejs");
+// var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 // var googleConfig = {
-//     clientID     : process.env.GOOGLE_CLIENT_ID,
-//     clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-//     callbackURL  : process.env.GOOGLE_CALLBACK_URL
-// // };
+//     clientID     : '222671963957-205m5fibvtpc223bpdsid045fd4vjg1u.apps.googleusercontent.com',
+//     clientSecret : 'Gm8CnkQKjc4_SkE9-naJmnGa',
+//     callbackURL  : '/auth/google/callback'
+// };
+var googleConfig = {
+    clientID     : process.env.GOOGLE_CLIENT_ID,
+    clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL  : process.env.GOOGLE_CALLBACK_URL
+// };
 passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 
 
