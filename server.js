@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.use(cookieParser());
-app.use(session({ secret: "put some text here" })); // Store secret in environment variable
+app.use(session({ secret: process.env.WEBDEV_SESSION_SECRET })); // Store secret in environment variable
 app.use(passport.initialize());
 app.use(passport.session());
 
