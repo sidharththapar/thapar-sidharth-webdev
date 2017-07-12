@@ -9,8 +9,11 @@ My Projects:
 
 This repository is for web development course.
 
-URL for app hosted on Heroku: https://thapar-sidharth-assignment1.herokuapp.com/
+ASSIGNMENT: 
+Heroku Link: https://thapar-sidharth-assignment1.herokuapp.com/
+Github Link: https://github.com/sidharththapar/thapar-sidharth-webdev/tree/master/public/assignment
 
-Link to my project: https://github.com/sidharththapar/thapar-sidharth-webdev/tree/master/public/project
+PROJECT: 
+Heroku Link: https://press-portal.herokuapp.com/#!/
+Github Link: https://github.com/sidharththapar/press-portal
 
-Link to my assignment: https://github.com/sidharththapar/thapar-sidharth-webdev/tree/master/public/assignment
